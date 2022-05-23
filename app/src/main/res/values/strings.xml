@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">BootCampPractica2022</string>
+    <string name="txt_user">Usuario</string>
+    <string name="txt_password">Contraseña</string>
+    <string name="txt_forgot_password">¿Olvidaste la contraseña?</string>
+    <string name="btn_login">Login</string>
+    <string name="txt_login_options">Ó podes ingresar con</string>
+    <string name="txt_dont_account">¿No tienes cuenta?</string>
+    <string name="txt_registration">Registrate</string>
+    <string name="txt_continue_guest">Continuar como invitado</string>
 </resources>
