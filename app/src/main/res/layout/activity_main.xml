@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
-    android:background="@color/primary"
+    android:background="@color/ambar"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -15,10 +15,10 @@
 
         <ImageView
             android:id="@+id/img_logoLogin"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="50dp"
-            android:src="@drawable/logo"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="40dp"
+            android:src="@mipmap/ic_launcher"
             android:layout_gravity="center"/>
 
         <TextView
@@ -57,7 +57,7 @@
 
 
         <EditText
-            android:id="@+id/edt_password"
+            android:id="@+id/edt_passwordLogin"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/rounded_edittext"
@@ -69,7 +69,7 @@
 
         <TextView
             android:clickable="true"
-            android:id="@+id/txt_forgot_passwordLogin"
+            android:id="@+id/txt_forgotPasswordLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
@@ -78,25 +78,25 @@
             android:textAlignment="textStart"
             android:textColor="@color/secondary_text"
             android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:focusable="true" />
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_loginLogin"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginVertical="40dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
+            android:paddingHorizontal="18dp"
+            android:paddingVertical="10dp"
             android:text="@string/btn_login"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:background="@drawable/rounded_button"
-            android:backgroundTint="@color/icons"/>
+            android:backgroundTint="@color/secondary_text"
+            android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/forgot_password"
+            android:id="@+id/txt_optionsLogin"
             android:layout_width="341dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
@@ -113,17 +113,17 @@
             android:layout_marginTop="25dp">
 
             <ImageView
-                android:id="@+id/img_ic_apple"
+                android:id="@+id/img_ic_appleLogin"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="40dp"
 
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/img_ic_facebook"
+                app:layout_constraintEnd_toStartOf="@+id/img_ic_facebookLogin"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/img_ic_facebook"
+                android:id="@+id/img_ic_facebookLogin"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -132,12 +132,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/img_ic_google"
+                android:id="@+id/img_ic_googleLogin"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="40dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_ic_facebook"
+                app:layout_constraintStart_toEndOf="@+id/img_ic_facebookLogin"
                 app:layout_constraintTop_toTopOf="parent"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -152,7 +152,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txt_no_cuenta"
+                android:id="@+id/txt_no_cuentaLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_dont_account"
@@ -162,19 +162,20 @@
 
             <TextView
                 android:clickable="true"
-                android:id="@+id/txt_registro"
+                android:id="@+id/txt_registroLogin"
                 android:layout_width="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_registration"
                 android:textColor="@color/primary_text"
                 android:textSize="16sp"
-                android:textStyle="italic|bold" />
+                android:textStyle="italic|bold"
+                android:focusable="true" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <TextView
             android:clickable="true"
-            android:id="@+id/txt_invitado"
+            android:id="@+id/txt_invitadoLogin"
             android:layout_width="wrap_content"
             android:layout_gravity="center"
             android:layout_marginVertical="20dp"
@@ -182,7 +183,8 @@
             android:text="@string/txt_continue_guest"
             android:textColor="@color/primary_text"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:focusable="true" />
 
 
 
