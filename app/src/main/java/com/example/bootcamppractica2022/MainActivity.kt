@@ -22,15 +22,16 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        Glide.with(this).load(R.drawable.ic_apple).apply(RequestOptions.circleCropTransform()).into(binding.imgIcApple)
-        Glide.with(this).load(R.drawable.ic_facebook).apply(RequestOptions.circleCropTransform()).into(binding.imgIcFacebook)
-        Glide.with(this).load(R.drawable.ic_google).apply(RequestOptions.circleCropTransform()).into(binding.imgIcGoogle)
+        Glide.with(this).load(R.drawable.ic_apple).apply(RequestOptions.circleCropTransform()).into(binding.imgIcAppleLogin)
+        Glide.with(this).load(R.drawable.ic_facebook).apply(RequestOptions.circleCropTransform()).into(binding.imgIcFacebookLogin)
+        Glide.with(this).load(R.drawable.ic_google).apply(RequestOptions.circleCropTransform()).into(binding.imgIcGoogleLogin)
     }
 
     override fun onResume() {
         super.onResume()
 
-        binding.txtRegistro.setOnClickListener(View.OnClickListener { toRegister() })
+        binding.txtRegistroLogin.setOnClickListener(View.OnClickListener { toRegister() })
+        binding.txtInvitadoLogin.setOnClickListener(View.OnClickListener { toMovies() })
     }
 
     private fun toRegister() {
@@ -38,8 +39,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    /*private fun toMovies() {
-        val intent = Intent(this, Registration::class.java)
+    private fun toMovies() {
+        val intent = Intent(this, NavigationActivity::class.java)
         startActivity(intent)
-    }*/
+    }
 }
