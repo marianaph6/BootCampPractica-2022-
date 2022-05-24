@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.BootCampPractica2022" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimary">@color/ambar</item>
         <item name="colorPrimaryVariant">@color/primary_light</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -16,5 +16,9 @@
 
     <style name="SplashTheme" parent="Theme.BootCampPractica2022">
         <item name="android:windowBackground"> @drawable/splash_screen</item>
+    </style>
+
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">#00FFFFFF</item>
     </style>
 </resources>
