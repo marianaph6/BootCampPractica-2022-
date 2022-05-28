@@ -91,7 +91,7 @@
             android:paddingVertical="10dp"
             android:text="@string/btn_login"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:backgroundTint="@color/secondary_text"
             android:textStyle="bold"/>
 
