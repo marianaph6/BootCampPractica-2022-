@@ -20,8 +20,8 @@ class MovieViewHolder (
             Glide.with(itemView).load(model.url).into((imageViewPrincipal))
             textViewTitle.text=model.title
             textViewYear.text=model.year.toString()
-            textViewType.text = model.type
-            ratingBar.numStars=model.rating.roundToInt()
+            textViewActors.text = model.actors.toString()
+            //ratingBar.numStars=model.rating.roundToInt()
         }
 
     }
