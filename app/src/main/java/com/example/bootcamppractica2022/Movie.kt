@@ -3,7 +3,7 @@ package com.example.bootcamppractica2022
 data class Movie(
     val url: String,
     val title: String,
-    val rating: Float,
+    //val rating: Float,
     val year: Short,
-    val type: String
+    val actors: List<String>
 )

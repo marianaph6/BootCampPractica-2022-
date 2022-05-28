@@ -31,13 +31,8 @@ class SearchFragment : Fragment() {
 
 
         binding = FragmentSearchBinding.inflate(inflater, container, false)
-        val context: Context? = this.context
-
-
         initRecyclerView()
-
         initData()
-        Toast.makeText(this.context, "kbjbbbb", Toast.LENGTH_LONG).show()
         return binding.root
     }
 
@@ -60,26 +55,28 @@ class SearchFragment : Fragment() {
 
 
     private fun getData(): List<Movie>{
+        val list = listOf("Actor1", "Actor2", "Ator3")
         return  listOf(
+
             Movie(
                 url = "https://es.web.img2.acsta.net/pictures/16/10/26/16/34/380275.jpg",
                 title = "Sully",
-                rating = 5.0F,
-                type = "HD",
+                //rating = 5.0F,
+                actors = list,
                 year = 2020,
             ),
             Movie(
                 url = "https://i.pinimg.com/564x/05/c7/5a/05c75a7b6c4d938dfcc5e3015188b3cc.jpg",
                 title = "La sirenita",
-                rating = 4.3F,
-                type = "HD",
+                //rating = 4.3F,
+                actors = list,
                 year = 1998,
             ),
             Movie(
                 url = "https://es.web.img2.acsta.net/pictures/16/10/26/16/34/380275.jpg",
                 title = "Sully",
-                rating = 5.0F,
-                type = "HD",
+                //rating = 5.0F,
+                actors = list,
                 year = 202,
             ),
         )
