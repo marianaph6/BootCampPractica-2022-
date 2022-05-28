@@ -1,42 +1,90 @@
 package com.example.bootcamppractica2022.ui.search
 
+import android.R
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.bootcamppractica2022.Movie
 import com.example.bootcamppractica2022.databinding.FragmentSearchBinding
+
 
 class SearchFragment : Fragment() {
 
-    private var _binding: FragmentSearchBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentSearchBinding
+
+    private lateinit var adapterMovies: MovieAdapter
+
+    private val data = mutableListOf<Movie>()
+
+
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val searchViewModel =
-            ViewModelProvider(this).get(SearchViewModel::class.java)
 
-        _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textSearch
-        searchViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
+        val context: Context? = this.context
+
+
+        initRecyclerView()
+
+        initData()
+        Toast.makeText(this.context, "kbjbbbb", Toast.LENGTH_LONG).show()
+        return binding.root
+    }
+
+
+    private fun initRecyclerView() {
+        adapterMovies = MovieAdapter(data)
+        with(binding.recyclerView) {
+            layoutManager = LinearLayoutManager(activity)
+            adapter = adapterMovies
+
         }
-        return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun initData() {
+        val newData = getData()
+        data.clear()
+        data.addAll(newData)
+        adapterMovies.notifyDataSetChanged()
     }
+
+
+    private fun getData(): List<Movie>{
+        return  listOf(
+            Movie(
+                url = "https://es.web.img2.acsta.net/pictures/16/10/26/16/34/380275.jpg",
+                title = "Sully",
+                rating = 5.0F,
+                type = "HD",
+                year = 2020,
+            ),
+            Movie(
+                url = "https://i.pinimg.com/564x/05/c7/5a/05c75a7b6c4d938dfcc5e3015188b3cc.jpg",
+                title = "La sirenita",
+                rating = 4.3F,
+                type = "HD",
+                year = 1998,
+            ),
+            Movie(
+                url = "https://es.web.img2.acsta.net/pictures/16/10/26/16/34/380275.jpg",
+                title = "Sully",
+                rating = 5.0F,
+                type = "HD",
+                year = 202,
+            ),
+        )
+
+    }
+
+
 }
