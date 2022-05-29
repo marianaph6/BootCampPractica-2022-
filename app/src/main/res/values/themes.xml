@@ -21,4 +21,10 @@
     <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">#00FFFFFF</item>
     </style>
+
+    <style name="outlinedTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/accent</item>
+        <item name="hintTextColor">@color/accent</item>
+        <item name="android:textColorHint">@color/accent</item>
+    </style>
 </resources>
