@@ -4,15 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.bootcamppractica2022.databinding.ActivityNavigationBinding
 import com.example.bootcamppractica2022.databinding.ActivityRegistrationBinding
 
 
-class RegistrationActiviyy : AppCompatActivity() {
+class RegistrationActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityRegistrationBinding
+    private var _binding: ActivityRegistrationBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityRegistrationBinding.inflate(layoutInflater)
+        _binding= ActivityRegistrationBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 
@@ -32,5 +35,10 @@ class RegistrationActiviyy : AppCompatActivity() {
                 )
             )
         })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

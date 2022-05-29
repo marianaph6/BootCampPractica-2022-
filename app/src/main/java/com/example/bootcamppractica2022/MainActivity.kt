@@ -10,11 +10,14 @@ import com.example.bootcamppractica2022.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+
+    private var _binding: ActivityMainBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_BootCampPractica2022)
         super.onCreate(savedInstanceState)
-        binding= ActivityMainBinding.inflate(layoutInflater)
+        _binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 
@@ -34,12 +37,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toRegister() {
-        val intent = Intent(this, RegistrationActiviyy::class.java)
+        val intent = Intent(this, RegistrationActivity::class.java)
         startActivity(intent)
     }
 
     private fun toMovies() {
         val intent = Intent(this, NavigationActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

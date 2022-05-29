@@ -1,28 +1,27 @@
 package com.example.bootcamppractica2022.ui.search
 
-import android.R
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bootcamppractica2022.Movie
+import com.example.bootcamppractica2022.commons.Movie
+import com.example.bootcamppractica2022.databinding.FragmentHomeBinding
 import com.example.bootcamppractica2022.databinding.FragmentSearchBinding
 
 
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment()  {
 
-
-    private lateinit var binding: FragmentSearchBinding
+    private var _binding: FragmentSearchBinding? = null
+    private val binding get() = _binding!!
 
     private lateinit var adapterMovies: MovieAdapter
 
     private val data = mutableListOf<Movie>()
 
-
+    private lateinit var svSearch: SearchView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,12 +29,17 @@ class SearchFragment : Fragment() {
     ): View {
 
 
-        binding = FragmentSearchBinding.inflate(inflater, container, false)
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
         initRecyclerView()
         initData()
+        //binding.searchViewMovie.setOnQueryTextListener(object: SearchView.OnQueryTextListener)
         return binding.root
     }
 
+    private fun initListener(){
+
+
+    }
 
     private fun initRecyclerView() {
         adapterMovies = MovieAdapter(data)
@@ -81,6 +85,10 @@ class SearchFragment : Fragment() {
             ),
         )
 
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 

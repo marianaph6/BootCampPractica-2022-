@@ -7,16 +7,19 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.bootcamppractica2022.databinding.ActivityMainBinding
 import com.example.bootcamppractica2022.databinding.ActivityNavigationBinding
 
 class NavigationActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityNavigationBinding
+
+    private var _binding: ActivityNavigationBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityNavigationBinding.inflate(layoutInflater)
+        _binding = ActivityNavigationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
@@ -30,5 +33,10 @@ class NavigationActivity : AppCompatActivity() {
         )
         //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

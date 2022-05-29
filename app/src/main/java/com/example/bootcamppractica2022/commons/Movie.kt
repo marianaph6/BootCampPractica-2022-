@@ -1,4 +1,4 @@
-package com.example.bootcamppractica2022
+package com.example.bootcamppractica2022.commons
 
 data class Movie(
     val url: String,
