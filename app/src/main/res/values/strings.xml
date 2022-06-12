@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">BootCampPractica2022</string>
+    <string name="txt_user">Usuario</string>
+    <string name="txt_password">Contraseña</string>
+    <string name="txt_forgot_password">¿Olvidaste la contraseña?</string>
+    <string name="btn_login">Login</string>
+    <string name="txt_login_options">Ó podes ingresar con</string>
+    <string name="txt_dont_account">¿No tienes cuenta?</string>
+    <string name="txt_registration">Registrate</string>
+    <string name="txt_continue_guest">Continuar como invitado</string>
+    <string name="txt_create_account">Crear una cuenta</string>
+    <string name="txt_name">Nombre</string>
+    <string name="txt_email">Correo electrónico</string>
+    <string name="txt_lenght_password">La contraseña debe de tener 8 caracteres</string>
+    <string name="txt_accept">Aceptar</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_play">Play</string>
+    <string name="title_profile">Profile</string>
+    <string name="app_searchView">Search...</string>
+</resources>
