@@ -1,4 +1,4 @@
-package com.example.bootcamppractica2022
+package com.example.bootcamppractica2022.presentation.handler
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,11 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+
+import com.example.bootcamppractica2022.R
+import com.example.bootcamppractica2022.presentation.register.RegistrationActivity
 import com.example.bootcamppractica2022.databinding.ActivityMainBinding
+import com.example.bootcamppractica2022.presentation.navigation.NavigationActivity
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,9 +1,9 @@
-package com.example.bootcamppractica2022.ui.search
+package com.example.bootcamppractica2022.presentation.navigation.search
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.bootcamppractica2022.commons.Movie
+import com.example.bootcamppractica2022.domain.Movie
 import com.example.bootcamppractica2022.databinding.ItemViewHolderMovieBinding
 
 class MovieViewHolder (

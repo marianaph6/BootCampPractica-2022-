@@ -1,13 +1,10 @@
-package com.example.bootcamppractica2022.ui.play
+package com.example.bootcamppractica2022.presentation.navigation.play
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.bootcamppractica2022.databinding.FragmentHomeBinding
 import com.example.bootcamppractica2022.databinding.FragmentPlayBinding
 
 class PlayFragment : Fragment() {
