@@ -1,16 +1,17 @@
 package com.example.bootcamppractica2022.presentation.handler
 
+import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-
-import com.example.bootcamppractica2022.R
-import com.example.bootcamppractica2022.presentation.register.RegistrationActivity
 import com.example.bootcamppractica2022.databinding.ActivityMainBinding
 import com.example.bootcamppractica2022.presentation.navigation.NavigationActivity
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.Theme_BootCampPractica2022)
+        setTheme(com.example.bootcamppractica2022.R.style.Theme_BootCampPractica2022)
         super.onCreate(savedInstanceState)
         _binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -28,9 +29,9 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        Glide.with(this).load(R.drawable.ic_apple).apply(RequestOptions.circleCropTransform()).into(binding.imgIcAppleLogin)
-        Glide.with(this).load(R.drawable.ic_facebook).apply(RequestOptions.circleCropTransform()).into(binding.imgIcFacebookLogin)
-        Glide.with(this).load(R.drawable.ic_google).apply(RequestOptions.circleCropTransform()).into(binding.imgIcGoogleLogin)
+        Glide.with(this).load(com.example.bootcamppractica2022.R.drawable.ic_apple).apply(RequestOptions.circleCropTransform()).into(binding.imgIcAppleLogin)
+        Glide.with(this).load(com.example.bootcamppractica2022.R.drawable.ic_facebook).apply(RequestOptions.circleCropTransform()).into(binding.imgIcFacebookLogin)
+        Glide.with(this).load(com.example.bootcamppractica2022.R.drawable.ic_google).apply(RequestOptions.circleCropTransform()).into(binding.imgIcGoogleLogin)
     }
 
     override fun onResume() {
@@ -41,8 +42,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toRegister() {
-        val intent = Intent(this, RegistrationActivity::class.java)
-        startActivity(intent)
+
+
     }
 
     private fun toMovies() {

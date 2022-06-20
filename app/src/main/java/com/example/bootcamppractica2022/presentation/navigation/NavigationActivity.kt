@@ -5,6 +5,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.bootcamppractica2022.R
 import com.example.bootcamppractica2022.databinding.ActivityNavigationBinding
@@ -30,10 +31,11 @@ class NavigationActivity : AppCompatActivity() {
                 R.id.navigation_home,
                 R.id.navigation_profile,
                 R.id.navigation_play,
-                R.id.navigation_search
+                R.id.navigation_search,
+                R.id.navigation_registration
             )
         )
-        //setupActionBarWithNavController(navController, appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 

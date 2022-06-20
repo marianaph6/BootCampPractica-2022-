@@ -185,11 +185,5 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:focusable="true" />
-
-
-
-
-
-
     </LinearLayout>
 </ScrollView>

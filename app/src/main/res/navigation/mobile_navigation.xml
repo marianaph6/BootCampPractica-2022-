@@ -28,4 +28,10 @@
         android:name="com.example.bootcamppractica2022.presentation.navigation.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_registration"
+        android:name="com.example.bootcamppractica2022.presentation.register.RegistrationFragment"
+        android:label="@string/title_registration"
+        tools:layout="@layout/fragment_registration" />
 </navigation>
