@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BootCampPractica2022</string>
+    <string name="app_name">IMBd</string>
     <string name="txt_user">Usuario</string>
     <string name="txt_password">Contraseña</string>
     <string name="txt_forgot_password">¿Olvidaste la contraseña?</string>
@@ -19,4 +19,7 @@
     <string name="title_play">Play</string>
     <string name="title_profile">Profile</string>
     <string name="app_searchView">Search...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_registration">Registration</string>
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.bootcamppractica2022">
+    package="com.example.imbd">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,18 +13,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BootCampPractica2022"
+        android:theme="@style/Theme.imbd"
         tools:targetApi="31">
         <activity
-            android:name=".NavigationActivity"
+            android:name=".presentation.navigation.NavigationActivity"
             android:exported="false"
             android:label="@string/title_activity_navigation" />
         <activity
-            android:name=".RegistrationActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity"/>
-        <activity
-            android:name=".MainActivity"
+            android:name=".presentation.handler.MainActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>

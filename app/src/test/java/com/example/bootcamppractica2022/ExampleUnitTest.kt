@@ -1,4 +1,4 @@
-package com.example.bootcamppractica2022
+package com.example.imbd
 
 import org.junit.Test
 
