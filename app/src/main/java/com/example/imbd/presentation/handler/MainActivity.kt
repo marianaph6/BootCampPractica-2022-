@@ -6,12 +6,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.imbd.databinding.ActivityMainBinding
 import com.example.imbd.presentation.navigation.NavigationActivity
+import com.example.imbd.presentation.register.RegistrationFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -67,6 +69,9 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun toRegister() {
+        supportFragmentManager.beginTransaction()
+            .replace(com.example.imbd.R.id.root_container, RegistrationFragment())
+            .commitAllowingStateLoss()
     }
 
     private fun toMovies() {
