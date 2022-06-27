@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        print("onCreate")
     }
 
     override fun onStart() {
@@ -32,27 +33,43 @@ class MainActivity : AppCompatActivity() {
         Glide.with(this).load(com.example.imbd.R.drawable.ic_apple).apply(RequestOptions.circleCropTransform()).into(binding.imgIcAppleLogin)
         Glide.with(this).load(com.example.imbd.R.drawable.ic_facebook).apply(RequestOptions.circleCropTransform()).into(binding.imgIcFacebookLogin)
         Glide.with(this).load(com.example.imbd.R.drawable.ic_google).apply(RequestOptions.circleCropTransform()).into(binding.imgIcGoogleLogin)
+        print("onStart")
     }
 
     override fun onResume() {
         super.onResume()
-
         binding.txtRegistroLogin.setOnClickListener(View.OnClickListener { toRegister() })
         binding.txtInvitadoLogin.setOnClickListener(View.OnClickListener { toMovies() })
+        print("onResume")
     }
 
-    private fun toRegister() {
-
-
+    override fun onPause() {
+        super.onPause()
+        print("onPause")
     }
 
-    private fun toMovies() {
-        val intent = Intent(this, NavigationActivity::class.java)
-        startActivity(intent)
+    override fun onStop() {
+        super.onStop()
+        print("onStop")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        print("onRestart")
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        print("onDestroy")
+    }
+
+
+    private fun toRegister() {
+    }
+
+    private fun toMovies() {
+        val intent = Intent(this, NavigationActivity::class.java)
+        startActivity(intent)
     }
 }
