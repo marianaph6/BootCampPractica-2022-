@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.imbd"
+        applicationId "com.example.bootcamppractica2022"
         minSdk 21
         targetSdk 32
         versionCode 1

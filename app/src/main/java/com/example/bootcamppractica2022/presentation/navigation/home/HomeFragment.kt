@@ -1,11 +1,11 @@
-package com.example.imbd.presentation.navigation.home
+package com.example.bootcamppractica2022.presentation.navigation.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.imbd.databinding.FragmentHomeBinding
+import com.example.bootcamppractica2022.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 

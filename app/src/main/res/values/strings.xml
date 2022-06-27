@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IMBd</string>
+    <string name="app_name">BootCampPractica2022</string>
     <string name="txt_user">Usuario</string>
     <string name="txt_password">Contraseña</string>
     <string name="txt_forgot_password">¿Olvidaste la contraseña?</string>

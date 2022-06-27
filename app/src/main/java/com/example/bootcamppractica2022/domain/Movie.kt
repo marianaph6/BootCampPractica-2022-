@@ -1,4 +1,4 @@
-package com.example.imbd.domain
+package com.example.bootcamppractica2022.domain
 
 data class Movie(
     val url: String,

@@ -1,11 +1,11 @@
-package com.example.imbd.presentation.navigation.play
+package com.example.bootcamppractica2022.presentation.navigation.play
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.imbd.databinding.FragmentPlayBinding
+import com.example.bootcamppractica2022.databinding.FragmentPlayBinding
 
 class PlayFragment : Fragment() {
 
