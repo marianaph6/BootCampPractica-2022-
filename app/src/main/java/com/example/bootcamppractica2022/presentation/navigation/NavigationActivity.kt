@@ -1,4 +1,4 @@
-package com.example.bootcamppractica2022.presentation.navigation
+package com.example.imbd.presentation.navigation
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -7,8 +7,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.bootcamppractica2022.R
-import com.example.bootcamppractica2022.databinding.ActivityNavigationBinding
+import com.example.imbd.R
+import com.example.imbd.databinding.ActivityNavigationBinding
 
 class NavigationActivity : AppCompatActivity() {
 
