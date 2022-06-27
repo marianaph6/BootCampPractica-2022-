@@ -3,6 +3,7 @@ package com.example.imbd.presentation.handler
 import android.R
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
@@ -72,4 +73,9 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, NavigationActivity::class.java)
         startActivity(intent)
     }
+
+    private fun print(msg: String){
+        Log.d("Activity State ",msg)
+    }
+
 }
