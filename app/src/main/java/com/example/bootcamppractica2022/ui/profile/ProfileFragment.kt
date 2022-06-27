@@ -1,11 +1,14 @@
-package com.example.imbd.ui.profile
+package com.example.bootcamppractica2022.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.imbd.databinding.FragmentProfileBinding
+import androidx.lifecycle.ViewModelProvider
+import com.example.bootcamppractica2022.databinding.FragmentPlayBinding
+import com.example.bootcamppractica2022.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
 

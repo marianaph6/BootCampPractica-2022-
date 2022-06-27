@@ -1,4 +1,4 @@
-package com.example.imbd
+package com.example.bootcamppractica2022
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.imbd.databinding.ActivityMainBinding
+import com.example.bootcamppractica2022.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

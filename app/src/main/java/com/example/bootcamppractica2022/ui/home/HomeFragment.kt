@@ -1,11 +1,14 @@
-package com.example.imbd.ui.home
+package com.example.bootcamppractica2022.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.imbd.databinding.FragmentHomeBinding
+import androidx.lifecycle.ViewModelProvider
+import com.example.bootcamppractica2022.databinding.FragmentHomeBinding
+import com.example.bootcamppractica2022.databinding.FragmentSearchBinding
 
 class HomeFragment : Fragment() {
 

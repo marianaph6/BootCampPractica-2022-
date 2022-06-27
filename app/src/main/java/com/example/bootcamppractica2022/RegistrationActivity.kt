@@ -1,10 +1,11 @@
-package com.example.imbd
+package com.example.bootcamppractica2022
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.imbd.databinding.ActivityRegistrationBinding
+import com.example.bootcamppractica2022.databinding.ActivityNavigationBinding
+import com.example.bootcamppractica2022.databinding.ActivityRegistrationBinding
 
 
 class RegistrationActivity : AppCompatActivity() {

@@ -1,10 +1,10 @@
-package com.example.imbd.ui.search
+package com.example.bootcamppractica2022.ui.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.imbd.commons.Movie
-import com.example.imbd.R
+import com.example.bootcamppractica2022.commons.Movie
+import com.example.bootcamppractica2022.R
 
 class MovieAdapter(
 

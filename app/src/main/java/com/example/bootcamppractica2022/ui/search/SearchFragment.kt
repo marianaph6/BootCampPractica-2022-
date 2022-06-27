@@ -1,4 +1,4 @@
-package com.example.imbd.ui.search
+package com.example.bootcamppractica2022.ui.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.imbd.commons.Movie
-import com.example.imbd.databinding.FragmentSearchBinding
+import com.example.bootcamppractica2022.commons.Movie
+import com.example.bootcamppractica2022.databinding.FragmentHomeBinding
+import com.example.bootcamppractica2022.databinding.FragmentSearchBinding
 
 
 class SearchFragment : Fragment()  {
