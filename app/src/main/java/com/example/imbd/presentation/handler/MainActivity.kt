@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(com.example.imbd.R.style.Theme_imbd)
+        setTheme(com.example.imbd.R.style.Theme_IMBd)
         super.onCreate(savedInstanceState)
         _binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
