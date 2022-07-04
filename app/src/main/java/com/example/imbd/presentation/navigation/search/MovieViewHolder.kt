@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.imbd.domain.Movie
-import com.example.imbd.databinding.ItemViewHolderMovieBinding
+import com.example.imbd.databinding.ItemViewHolderMovieVerticalBinding
 
 class MovieViewHolder (
 
@@ -12,7 +12,7 @@ class MovieViewHolder (
 
 ): RecyclerView.ViewHolder(view){
 
-    private val binding= ItemViewHolderMovieBinding.bind(view)
+    private val binding= ItemViewHolderMovieVerticalBinding.bind(view)
 
     fun bin (model: Movie){
         with(binding){

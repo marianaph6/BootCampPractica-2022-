@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/imageView_principal"
-        android:layout_width="@dimen/movie_item_image"
-        android:layout_height="120dp"
+        android:layout_width="@dimen/movie_item_image_width"
+        android:layout_height="@dimen/movie_item_image_height"
         android:layout_marginStart="@dimen/movie_small_space"
         android:layout_marginTop="@dimen/movie_small_space"
         android:contentDescription="@string/app_name"

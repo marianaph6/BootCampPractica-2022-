@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageViewLinearHorizontalPrincipal"
+            android:layout_width="@dimen/movie_item_image_width"
+            android:layout_height="@dimen/movie_item_image_height"
+            android:layout_marginStart="@dimen/movie_small_space"
+            android:layout_marginTop="@dimen/movie_small_space"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_bookmark_plus" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/textView_linearHorizontal_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/movie_small_space"
+        android:layout_marginTop="@dimen/movie_small_space"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/imageView_principal"
+        app:layout_constraintTop_toTopOf="@id/imageView_principal"
+        tools:text="Sully" />
+
+<!--    <RatingBar
+        android:id="@+id/ratingBar"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/very_small_space"
+        android:clickable="false"
+        android:isIndicator="false"
+        android:numStars="5"
+        app:layout_constraintStart_toStartOf="@id/textView_title"
+        app:layout_constraintTop_toBottomOf="@id/textView_title" />-->
+
+    <!--        app:layout_constraintTop_toBottomOf="@id/ratingBar"-->
+    <TextView
+        android:id="@+id/textView_linearHorizontal_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/movie_small_space"
+        android:layout_marginTop="@dimen/very_small_space"
+        android:textAlignment="textStart"
+        app:layout_constraintStart_toStartOf="@id/textView_linearHorizontal_title"
+        app:layout_constraintTop_toBottomOf="@id/textView_linearHorizontal_title"
+        tools:text="2020" />
+
+
+</LinearLayout>

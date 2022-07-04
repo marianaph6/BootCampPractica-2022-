@@ -1,22 +1,35 @@
 package com.example.imbd.presentation.register
 
-import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.PackageManagerCompat.LOG_TAG
 import androidx.fragment.app.Fragment
-import com.example.imbd.R
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.imbd.databinding.FragmentRegistrationBinding
-import com.example.imbd.presentation.handler.MainActivity
+import com.example.imbd.presentation.handler.MainViewModel
+import kotlinx.coroutines.launch
 
 
 class RegistrationFragment :  Fragment()  {
 
     private var _binding: FragmentRegistrationBinding? = null
     private val binding get() = _binding!!
+
+    private val registrationViewModel: RegistrationViewModel by viewModels()
+
+    private val sharedViewModel by lazy {
+        activity?.let {
+            ViewModelProvider(it)[MainViewModel::class.java]
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +46,32 @@ class RegistrationFragment :  Fragment()  {
         _binding = FragmentRegistrationBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initObservers()
+
+    }
+
+    private fun initObservers() {
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED){
+                registrationViewModel.uiState.collect{ uiState->
+                    with(binding){
+                        val error= handlerError(uiState.emailError)
+                        tieEmailRegistration.error= error?.let(this@RegistrationFragment::getString)
+                        if (uiState.isEmailCorrect){
+                            registrationViewModel.onEmailSyntax(binding.tieEmailRegistration.toString())
+                        }
+
+                    }
+
+                }
+            }
+        }
+    }
+
+    private fun handlerError(emailError: Int?):  Int? = emailError
 
     override fun onStart() {
         print("onStart()")
