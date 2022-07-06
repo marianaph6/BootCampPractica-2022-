@@ -55,7 +55,7 @@
             android:background="@drawable/ic_baseline_stars_24" />
 
         <TextView
-            android:id="@+id/textView_linearHorizontal_year"
+            android:id="@+id/textView_linearHorizontal_star"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

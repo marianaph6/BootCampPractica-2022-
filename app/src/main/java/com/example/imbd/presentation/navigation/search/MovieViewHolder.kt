@@ -3,7 +3,7 @@ package com.example.imbd.presentation.navigation.search
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.imbd.domain.Movie
+import com.example.imbd.domain.model.Movie
 import com.example.imbd.databinding.ItemViewHolderMovieVerticalBinding
 
 class MovieViewHolder (

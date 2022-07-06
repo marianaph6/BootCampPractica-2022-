@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.imbd.domain.Movie
+import com.example.imbd.domain.model.Movie
 import com.example.imbd.databinding.FragmentSearchBinding
 
 

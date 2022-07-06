@@ -3,7 +3,7 @@ package com.example.imbd.presentation.navigation.search
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.imbd.domain.Movie
+import com.example.imbd.domain.model.Movie
 import com.example.imbd.R
 
 class MovieAdapter(
