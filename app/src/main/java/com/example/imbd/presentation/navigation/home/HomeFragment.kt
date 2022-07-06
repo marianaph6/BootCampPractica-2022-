@@ -1,7 +1,6 @@
 package com.example.imbd.presentation.navigation.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,16 +13,11 @@ import com.example.imbd.domain.model.TopRatedMovie
 import com.example.imbd.network.TopRatedMovieService
 import com.example.imbd.network.model.TopRatedMovieNetworkEntity
 import com.example.imbd.network.model.TopRatedMovieNetworkMapper
-import com.example.imbd.network.responses.TopRatedMovieSearchResponse
 import com.example.recyclerviewkotlin.linearHorizontal.MovieLinearHorizontalAdapter
 import com.example.recyclerviewkotlin.linearHorizontal.MovieOnClickListener
-import com.google.gson.GsonBuilder
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -38,7 +32,7 @@ class HomeFragment : Fragment(), MovieOnClickListener {
 
     private lateinit var svSearch: SearchView
 
-    private var topRatedMovies= mutableListOf<TopRatedMovie>()
+    private var topRatedMovies= mutableListOf<TopRatedMovieNetworkEntity>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +42,7 @@ class HomeFragment : Fragment(), MovieOnClickListener {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         initRecyclerView()
-        initData()
+        searchTopRatedMovies()
 
         val mapper = TopRatedMovieNetworkMapper()
         val topRatedMovie= TopRatedMovie()
@@ -76,43 +70,31 @@ catch ( e : Exception )
 
     }
 
-    private fun searchTopRatedMovies(){
-        val BASE_URL = "https://api.themoviedb.org/3/";
-        val service = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+    private fun getRetrofit():Retrofit{
+        return Retrofit.Builder()
+            .baseUrl("https://api.themoviedb.org/3/")
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(TopRatedMovieService::class.java)
+    }
 
-        CoroutineScope(IO).launch {
-
-            service.get_top_rated_movies()
-                .enqueue(object : Callback<TopRatedMovieSearchResponse> {
-                    override fun onResponse(
-                        call: Call<TopRatedMovieSearchResponse>,
-                        response: Response<TopRatedMovieSearchResponse>
-                    ) {
-                        if (response.isSuccessful) {
-                            val responseBody = response.body()
-
-                            if (responseBody != null) {
-                                topRatedMovies=responseBody.top_rated_movies.map {
-                                    mapper.fromEntityList(listOf(it))
-                                }
-                                Log.d("Repository Succesfull", "Movies: $topRatedMovies")
-                            } else {
-                                Log.d("Repository", "Failed to get response")
-                            }
-                        }
+    private fun searchTopRatedMovies(){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = getRetrofit().create(TopRatedMovieService::class.java).get_top_rated_movies()
+            val movies = call.body()
+            activity?.runOnUiThread {
+                if (call.isSuccessful) {
+                    val top_rated_movies = movies?.top_rated_movies
+                    topRatedMovies.clear()
+                    if (top_rated_movies != null) {
+                        topRatedMovies.addAll( top_rated_movies)
                     }
-
-                    override fun onFailure(call: Call<TopRatedMovieSearchResponse>, t: Throwable) {
-                        Log.e("Repository", "onFailure", t)
-                    }
-                })
-
-
+                    //topRatedMovies.notifyDataSetChanged()
+                } else {
+                    //show error
+                }
+            }
         }
+
     }
 
     private fun initRecyclerView() {
@@ -404,7 +386,7 @@ catch ( e : Exception )
         _binding = null
     }
 
-    override fun onClick(movie: TopRatedMovie) {
+    override fun onClick(movie: TopRatedMovieNetworkEntity) {
         TODO("Not yet implemented")
     }
 }
