@@ -5,10 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imbd.R
 import com.example.imbd.domain.model.TopRatedMovie
-import com.example.imbd.network.model.TopRatedMovieNetworkEntity
 
 class MovieLinearHorizontalAdapter(
-    val data: List<TopRatedMovieNetworkEntity>,
+    val data: List<TopRatedMovie>,
     //Clase que instancia la interfaz
     val onClickListener: MovieOnClickListener
 ) : RecyclerView.Adapter<MovieLinearHorizontalViewHolder>() {
@@ -37,5 +36,5 @@ class MovieLinearHorizontalAdapter(
 }
 //Se le devuelve la info del objeto que seleccionó (Movie)
 interface MovieOnClickListener {
-    fun onClick(movie: TopRatedMovieNetworkEntity)
+    fun onClick(movie: TopRatedMovie)
 }

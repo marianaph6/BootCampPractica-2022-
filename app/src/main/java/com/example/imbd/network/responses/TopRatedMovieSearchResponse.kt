@@ -1,7 +1,6 @@
 package com.example.imbd.network.responses
 
 
-
 import com.example.imbd.network.model.TopRatedMovieNetworkEntity
 import com.google.gson.annotations.SerializedName
 
