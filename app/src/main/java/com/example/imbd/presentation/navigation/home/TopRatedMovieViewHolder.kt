@@ -1,16 +1,17 @@
-package com.example.recyclerviewkotlin.linearHorizontal
+package com.example.imbd.presentation.navigation.home
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.imbd.databinding.ItemViewHolderMovieHorizontalBinding
+import com.example.imbd.databinding.ItemViewHolderTopRatedMovieBinding
 import com.example.imbd.domain.model.TopRatedMovie
+import com.example.recyclerviewkotlin.linearHorizontal.MovieOnClickListener
 
-class MovieLinearHorizontalViewHolder(
+class TopRatedMovieViewHolder(
     view: View
 ) : RecyclerView.ViewHolder(view) {
 
-    private val binding = ItemViewHolderMovieHorizontalBinding.bind(view)
+    private val binding = ItemViewHolderTopRatedMovieBinding.bind(view)
 
     fun bind(model: TopRatedMovie, onClickListener: MovieOnClickListener) {
         with(binding) {

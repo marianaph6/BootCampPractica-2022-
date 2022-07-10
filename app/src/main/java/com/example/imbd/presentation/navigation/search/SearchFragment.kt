@@ -1,14 +1,20 @@
 package com.example.imbd.presentation.navigation.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.imbd.domain.model.Movie
 import com.example.imbd.databinding.FragmentSearchBinding
+import com.example.imbd.domain.model.ComicBookMovie
+import com.example.imbd.network.ComicBookMovie.ComicBookMovieSearchResponse
+import com.example.imbd.network.ComicBookMovie.ComicBookMovieService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class SearchFragment : Fragment()  {
@@ -16,9 +22,9 @@ class SearchFragment : Fragment()  {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var adapterMovies: MovieAdapter
+    private lateinit var adapterMovies: ComicBookMovieAdapter
 
-    private val data = mutableListOf<Movie>()
+    private val data = mutableListOf<ComicBookMovie>()
 
     private lateinit var svSearch: SearchView
 
@@ -29,10 +35,35 @@ class SearchFragment : Fragment()  {
 
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        initRecyclerView()
-        initData()
+
+        getComicBookMovies()
         //binding.searchViewMovie.setOnQueryTextListener(object: SearchView.OnQueryTextListener)
         return binding.root
+    }
+
+    private fun getComicBookMovies(){
+
+        val comicBookMovieSearchResponse= ComicBookMovieService.comicBookMovieInstance.getComicBookMovies()
+        comicBookMovieSearchResponse.enqueue(object : Callback<ComicBookMovieSearchResponse> {
+            override fun onFailure(call: Call<ComicBookMovieSearchResponse>, t: Throwable) {
+                Log.d("IMBD", "Error cargando las peliculas", t)
+            }
+
+            override fun onResponse(
+                call: Call<ComicBookMovieSearchResponse>,
+                response: Response<ComicBookMovieSearchResponse>
+            ) {
+                val comicBookMovieSearchResponse: ComicBookMovieSearchResponse?= response.body()
+                if (comicBookMovieSearchResponse != null){
+                    Log.d("IMBD", comicBookMovieSearchResponse.toString())
+                    initRecyclerView(comicBookMovieSearchResponse)
+                }
+            }
+        }
+
+        )
+
+
     }
 
     private fun initListener(){
@@ -40,8 +71,8 @@ class SearchFragment : Fragment()  {
 
     }
 
-    private fun initRecyclerView() {
-        adapterMovies = MovieAdapter(data)
+    private fun initRecyclerView(comicBookMovieSearchResponse: ComicBookMovieSearchResponse) {
+        adapterMovies = ComicBookMovieAdapter(comicBookMovieSearchResponse.items)
         with(binding.recyclerView) {
             layoutManager = LinearLayoutManager(activity)
             adapter = adapterMovies
@@ -50,41 +81,13 @@ class SearchFragment : Fragment()  {
     }
 
     private fun initData() {
-        val newData = getData()
-        data.clear()
-        data.addAll(newData)
+        //val newData = getData()
+        //data.clear()
+        //data.addAll(newData)
         adapterMovies.notifyDataSetChanged()
     }
 
 
-    private fun getData(): List<Movie>{
-        val list = listOf("Actor1", "Actor2", "Ator3")
-        return  listOf(
-
-            Movie(
-                url = "https://es.web.img2.acsta.net/pictures/16/10/26/16/34/380275.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020,
-            ),
-            Movie(
-                url = "https://i.pinimg.com/564x/05/c7/5a/05c75a7b6c4d938dfcc5e3015188b3cc.jpg",
-                title = "La sirenita",
-                //rating = 4.3F,
-                actors = list,
-                year = 1998,
-            ),
-            Movie(
-                url = "https://es.web.img2.acsta.net/pictures/16/10/26/16/34/380275.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 202,
-            ),
-        )
-
-    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

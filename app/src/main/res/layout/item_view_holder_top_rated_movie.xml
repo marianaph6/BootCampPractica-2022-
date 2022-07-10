@@ -55,9 +55,9 @@
 
             <TextView
                 android:id="@+id/textView_linearHorizontal_star"
-                android:layout_width="match_parent"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="end"
                 tools:text="8.7" />
         </RelativeLayout>
 
@@ -68,8 +68,8 @@
             android:layout_marginStart="@dimen/movie_small_space"
             android:layout_marginTop="@dimen/movie_small_space"
             android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@id/imageView_principal"
-            app:layout_constraintTop_toTopOf="@id/imageView_principal"
+            app:layout_constraintStart_toEndOf="@id/imageViewLinearHorizontalPrincipal"
+            app:layout_constraintTop_toTopOf="@id/imageViewLinearHorizontalPrincipal"
             tools:text="Sully" />
 
         <!--    <RatingBar

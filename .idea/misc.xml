@@ -7,12 +7,15 @@
         <entry key="..\:/Users/maria/Documents/Personal/Cursos/BootCamp-AndroidStudio/Repositorios/IMBd/app/src/main/res/drawable/ic_bookmark_plus.xml" value="0.195" />
         <entry key="..\:/Users/maria/Documents/Personal/Cursos/BootCamp-AndroidStudio/Repositorios/IMBd/app/src/main/res/drawable/ic_bookmark_plus_5.xml" value="0.195" />
         <entry key="..\:/Users/maria/Documents/Personal/Cursos/BootCamp-AndroidStudio/Repositorios/IMBd/app/src/main/res/layout/activity_main.xml" value="0.11481481481481481" />
-        <entry key="..\:/Users/maria/Documents/Personal/Cursos/BootCamp-AndroidStudio/Repositorios/IMBd/app/src/main/res/layout/fragment_home.xml" value="0.4" />
+        <entry key="..\:/Users/maria/Documents/Personal/Cursos/BootCamp-AndroidStudio/Repositorios/IMBd/app/src/main/res/layout/fragment_detail_movie.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/maria/Documents/Personal/Cursos/BootCamp-AndroidStudio/Repositorios/IMBd/app/src/main/res/layout/fragment_home.xml" value="0.169921875" />
         <entry key="..\:/Users/maria/Documents/Personal/Cursos/BootCamp-AndroidStudio/Repositorios/IMBd/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/maria/Documents/Personal/Cursos/BootCamp-AndroidStudio/Repositorios/IMBd/app/src/main/res/layout/fragment_registration.xml" value="0.1" />
         <entry key="..\:/Users/maria/Documents/Personal/Cursos/BootCamp-AndroidStudio/Repositorios/IMBd/app/src/main/res/layout/fragment_search.xml" value="0.2" />
+        <entry key="..\:/Users/maria/Documents/Personal/Cursos/BootCamp-AndroidStudio/Repositorios/IMBd/app/src/main/res/layout/item_view_holder_comic_book_movie.xml" value="0.16" />
         <entry key="..\:/Users/maria/Documents/Personal/Cursos/BootCamp-AndroidStudio/Repositorios/IMBd/app/src/main/res/layout/item_view_holder_movie_horizontal.xml" value="0.16799999999999998" />
         <entry key="..\:/Users/maria/Documents/Personal/Cursos/BootCamp-AndroidStudio/Repositorios/IMBd/app/src/main/res/layout/item_view_holder_movie_vertical.xml" value="0.1" />
+        <entry key="..\:/Users/maria/Documents/Personal/Cursos/BootCamp-AndroidStudio/Repositorios/IMBd/app/src/main/res/layout/item_view_holder_top_rated_movie.xml" value="0.4" />
         <entry key="..\:/Users/maria/Documents/Personal/Cursos/BootCamp-AndroidStudio/Repositorios/IMBd/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
       </map>
     </option>

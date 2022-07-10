@@ -3,19 +3,77 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     tools:context=".presentation.navigation.home.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_portada"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/ivPlayMovie"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:translationZ="1dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivPortadaMovie"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_baseline_play_circle_outline" />
+
+        <ImageView
+            android:id="@+id/ivPortadaMovie"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/logo" />
+
+        <ImageView
+            android:id="@+id/ivPosterMovie"
+            android:layout_width="120dp"
+            android:layout_height="170dp"
+            android:layout_marginLeft="20dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@id/ivPortadaMovie"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivPortadaMovie"
+            tools:src="@drawable/logo" />
+        <TextView
+            android:id="@+id/txTitleMovie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/ivPosterMovie"
+            app:layout_constraintTop_toBottomOf="@+id/ivPortadaMovie"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Stranger Things"/>
+        <TextView
+            android:id="@+id/txDescriptionMoviePortada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/ivPosterMovie"
+            app:layout_constraintTop_toBottomOf="@+id/txTitleMovie"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"
+            android:text="Trailer Oficial"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/item_portada"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_view_holder_movie_horizontal" />
+        android:layout_marginBottom="@dimen/movie_item_image_width"
+        tools:listitem="@layout/item_view_holder_top_rated_movie" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,9 +6,9 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView_principal"
-        android:layout_width="@dimen/movie_item_image_width"
-        android:layout_height="@dimen/movie_item_image_height"
+        android:id="@+id/imageView_comicBookMovie_poster"
+        android:layout_width="119dp"
+        android:layout_height="165dp"
         android:layout_marginStart="@dimen/movie_small_space"
         android:layout_marginTop="@dimen/movie_small_space"
         android:contentDescription="@string/app_name"
@@ -18,46 +18,36 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView_title"
+        android:id="@+id/textView_comicBookMovie_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/movie_small_space"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/imageView_principal"
-        app:layout_constraintTop_toTopOf="@id/imageView_principal"
+        app:layout_constraintStart_toEndOf="@id/imageView_comicBookMovie_poster"
+        app:layout_constraintTop_toTopOf="@id/imageView_comicBookMovie_poster"
         tools:text="Sully" />
 
-<!--    <RatingBar
-        android:id="@+id/ratingBar"
-        style="?android:attr/ratingBarStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/very_small_space"
-        android:clickable="false"
-        android:isIndicator="false"
-        android:numStars="5"
-        app:layout_constraintStart_toStartOf="@id/textView_title"
-        app:layout_constraintTop_toBottomOf="@id/textView_title" />-->
 
-    <!--        app:layout_constraintTop_toBottomOf="@id/ratingBar"-->
+
     <TextView
-        android:id="@+id/textView_year"
+        android:id="@+id/textView_comicBookMovie_year"
         android:layout_width="0dp"
+        android:layout_marginVertical="10dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/very_small_space"
-        app:layout_constraintStart_toStartOf="@id/textView_title"
-        app:layout_constraintTop_toBottomOf="@id/textView_title"
+        app:layout_constraintStart_toStartOf="@id/textView_comicBookMovie_title"
+        app:layout_constraintTop_toBottomOf="@id/textView_comicBookMovie_title"
         tools:text="2020" />
 
     <TextView
-        android:id="@+id/textView_actors"
+        android:id="@+id/textView_comicBookMovie_type"
         android:layout_width="0dp"
+
         android:layout_height="wrap_content"
-        android:textSize="10sp"
         android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="@id/textView_title"
-        app:layout_constraintTop_toBottomOf="@id/textView_year"
+        app:layout_constraintStart_toStartOf="@id/textView_comicBookMovie_title"
+        app:layout_constraintTop_toBottomOf="@id/textView_comicBookMovie_year"
         tools:text="HD" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "176525360394",
+    "project_id": "imbd-ba79d",
+    "storage_bucket": "imbd-ba79d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176525360394:android:08076540d7e5240b4c4ef3",
+        "android_client_info": {
+          "package_name": "com.example.imbd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176525360394-31jhcogi5f4k1aels5i8pr11nkufbhqd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_N86fohBlTTj7mKr_x-l5Xvco61XsBBo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176525360394-31jhcogi5f4k1aels5i8pr11nkufbhqd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

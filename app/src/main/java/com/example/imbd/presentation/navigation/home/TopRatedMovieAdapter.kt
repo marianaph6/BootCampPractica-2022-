@@ -5,28 +5,29 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imbd.R
 import com.example.imbd.domain.model.TopRatedMovie
+import com.example.imbd.presentation.navigation.home.TopRatedMovieViewHolder
 
 class MovieLinearHorizontalAdapter(
     val data: List<TopRatedMovie>,
     //Clase que instancia la interfaz
     val onClickListener: MovieOnClickListener
-) : RecyclerView.Adapter<MovieLinearHorizontalViewHolder>() {
+) : RecyclerView.Adapter<TopRatedMovieViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): MovieLinearHorizontalViewHolder {
+    ): TopRatedMovieViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return MovieLinearHorizontalViewHolder(
+        return TopRatedMovieViewHolder(
             layoutInflater.inflate(
-                R.layout.item_view_holder_movie_horizontal,
+                R.layout.item_view_holder_top_rated_movie,
                 parent,
                 false
             )
         )
     }
 
-    override fun onBindViewHolder(holder: MovieLinearHorizontalViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TopRatedMovieViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item, onClickListener)
     }

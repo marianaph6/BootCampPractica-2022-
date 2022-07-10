@@ -7,13 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.imbd.databinding.FragmentHomeBinding
+import com.example.imbd.domain.model.ComicBookMovie
 import com.example.imbd.domain.model.Movie
 import com.example.imbd.domain.model.TopRatedMovie
 import com.example.imbd.network.TopRatedMovieService
 import com.example.imbd.network.TopRatedMovie.TopRatedMovieSearchResponse
 import com.example.recyclerviewkotlin.linearHorizontal.MovieLinearHorizontalAdapter
 import com.example.recyclerviewkotlin.linearHorizontal.MovieOnClickListener
+import kotlinx.android.synthetic.main.item_view_holder_comic_book_movie.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,8 +29,7 @@ class HomeFragment : Fragment(), MovieOnClickListener {
 
     private lateinit var adapterMovies: MovieLinearHorizontalAdapter
 
-
-    private var topRatedMovies= mutableListOf<TopRatedMovie>()
+    private var data = mutableListOf<TopRatedMovie>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +39,10 @@ class HomeFragment : Fragment(), MovieOnClickListener {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+
+
         getTopRatedMovies()
+        //getPosterPathMovie()
 
         return binding.root
     }
@@ -45,6 +51,18 @@ class HomeFragment : Fragment(), MovieOnClickListener {
 
 
     }
+
+    private fun getPosterPathMovie(){
+        var randomMovie= ((0 until data.size).random())
+        val moviePoster: TopRatedMovie= data[randomMovie]
+        with(binding){
+            Glide.with(this@HomeFragment).load("https://image.tmdb.org/t/p/w500/"+moviePoster.backdrop_path,).into(ivPortadaMovie)
+            Glide.with(this@HomeFragment).load("https://image.tmdb.org/t/p/w500/"+moviePoster.poster_path,).into(ivPosterMovie)
+            txTitleMovie.text = moviePoster.title
+        }
+
+    }
+
 
     private fun getTopRatedMovies(){
 
@@ -58,10 +76,12 @@ class HomeFragment : Fragment(), MovieOnClickListener {
                 call: Call<TopRatedMovieSearchResponse>,
                 response: Response<TopRatedMovieSearchResponse>
             ) {
-                val topMovieSearchResponse: TopRatedMovieSearchResponse?= response.body()
-                if (topMovieSearchResponse != null){
-                    Log.d("IMBD", topMovieSearchResponse.toString())
-                    initRecyclerView(topMovieSearchResponse)
+                val topMovieSearchResponseData: TopRatedMovieSearchResponse?= response.body()
+                if (topMovieSearchResponseData != null){
+                    Log.d("IMBD", topMovieSearchResponseData.toString())
+                    data= topMovieSearchResponseData.results as MutableList<TopRatedMovie>
+                    initRecyclerView()
+                    getPosterPathMovie()
                 }
             }
         }
@@ -71,8 +91,8 @@ class HomeFragment : Fragment(), MovieOnClickListener {
 
     }
 
-    private fun initRecyclerView(topRatedMovieSearchResponse: TopRatedMovieSearchResponse) {
-        adapterMovies = MovieLinearHorizontalAdapter(topRatedMovieSearchResponse.results, this)
+    private fun initRecyclerView() {
+        adapterMovies = MovieLinearHorizontalAdapter(data, this)
         with(binding.recyclerView) {
             layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
             adapter = adapterMovies
@@ -81,279 +101,12 @@ class HomeFragment : Fragment(), MovieOnClickListener {
     }
 
     private fun initData() {
-        val newData = getData()
+        //val newData = getData()
         //data.clear()
         //data.addAll(newData)
         adapterMovies.notifyDataSetChanged()
     }
 
-
-    private fun getData(): List<Movie> {
-        val list = listOf("Actor1", "Actor2", "Ator3")
-        return listOf(
-            Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),
-            Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),
-            Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),Movie(
-                url = "https://www.aceprensa.com/wp-content/uploads/2016/11/363676-0.jpg",
-                title = "Sully",
-                //rating = 5.0F,
-                actors = list,
-                year = 2020
-            ),
-        )
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
