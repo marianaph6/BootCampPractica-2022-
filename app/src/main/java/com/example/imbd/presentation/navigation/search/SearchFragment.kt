@@ -3,8 +3,10 @@ package com.example.imbd.presentation.navigation.search
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,9 +24,9 @@ class SearchFragment : Fragment()  {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var adapterMovies: ComicBookMovieAdapter
-
-    private val data = mutableListOf<ComicBookMovie>()
+    private var data : ArrayList<ComicBookMovie> = arrayListOf()
+    private var matchedBookMovie: ArrayList<ComicBookMovie> = arrayListOf()
+    private var adapterMovies: ComicBookMovieAdapter = ComicBookMovieAdapter(data)
 
     private lateinit var svSearch: SearchView
 
@@ -37,6 +39,7 @@ class SearchFragment : Fragment()  {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
 
         getComicBookMovies()
+        performSearch()
         //binding.searchViewMovie.setOnQueryTextListener(object: SearchView.OnQueryTextListener)
         return binding.root
     }
@@ -56,7 +59,9 @@ class SearchFragment : Fragment()  {
                 val comicBookMovieSearchResponse: ComicBookMovieSearchResponse?= response.body()
                 if (comicBookMovieSearchResponse != null){
                     Log.d("IMBD", comicBookMovieSearchResponse.toString())
-                    initRecyclerView(comicBookMovieSearchResponse)
+                    data= comicBookMovieSearchResponse.items as ArrayList<ComicBookMovie>
+                    initRecyclerView()
+                    adapterMovies.notifyDataSetChanged()
                 }
             }
         }
@@ -66,18 +71,64 @@ class SearchFragment : Fragment()  {
 
     }
 
+    private fun performSearch() {
+        binding.searchViewMovie.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                search(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                search(newText)
+                return true
+            }
+        })
+    }
+
+    private fun search(text: String?) {
+        matchedBookMovie = arrayListOf()
+
+        text?.let {
+            data.forEach { movie ->
+                if (movie.title.toString().contains(text, true) ||
+                    movie.original_title.toString().contains(text, true)
+                ) {
+                    matchedBookMovie.add(movie)
+                }
+            }
+            updateRecyclerView()
+            if (matchedBookMovie.isEmpty()) {
+                Toast.makeText(context, "No match found!", Toast.LENGTH_SHORT).show()
+            }
+            updateRecyclerView()
+        }
+    }
+
+    private fun updateRecyclerView() {
+        binding.recyclerView.apply {
+            adapterMovies.data = matchedBookMovie
+            adapterMovies.notifyDataSetChanged()
+        }
+    }
+
+
+
+
+
     private fun initListener(){
 
 
     }
 
-    private fun initRecyclerView(comicBookMovieSearchResponse: ComicBookMovieSearchResponse) {
-        adapterMovies = ComicBookMovieAdapter(comicBookMovieSearchResponse.items)
+    private fun initRecyclerView() {
+        adapterMovies = ComicBookMovieAdapter(data)
         with(binding.recyclerView) {
             layoutManager = LinearLayoutManager(activity)
             adapter = adapterMovies
 
         }
+        binding.searchViewMovie.isSubmitButtonEnabled = true
     }
 
     private fun initData() {
@@ -86,6 +137,8 @@ class SearchFragment : Fragment()  {
         //data.addAll(newData)
         adapterMovies.notifyDataSetChanged()
     }
+
+
 
 
     override fun onDestroyView() {

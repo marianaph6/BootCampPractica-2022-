@@ -8,7 +8,7 @@ import com.example.imbd.domain.model.ComicBookMovie
 
 class ComicBookMovieAdapter(
 
-    val data: List<ComicBookMovie>
+    var data: ArrayList<ComicBookMovie>
 ):RecyclerView.Adapter<ComicBookMovieViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicBookMovieViewHolder {
@@ -26,6 +26,7 @@ class ComicBookMovieAdapter(
         val item = data[position]
         holder.bin(item)
     }
+
 
     override fun getItemCount(): Int= data.size
 }
