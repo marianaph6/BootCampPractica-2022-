@@ -1,4 +1,4 @@
-package com.example.recyclerviewkotlin.linearHorizontal
+package com.example.imbd.presentation.navigation.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,8 +9,8 @@ import com.example.imbd.presentation.navigation.home.TopRatedMovieViewHolder
 
 class MovieLinearHorizontalAdapter(
     val data: List<TopRatedMovie>,
-    //Clase que instancia la interfaz
-    val onClickListener: MovieOnClickListener
+    val onClickListener: TopRatedMovieOnClickListener
+
 ) : RecyclerView.Adapter<TopRatedMovieViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -36,6 +36,6 @@ class MovieLinearHorizontalAdapter(
 
 }
 //Se le devuelve la info del objeto que seleccionó (Movie)
-interface MovieOnClickListener {
+interface TopRatedMovieOnClickListener {
     fun onClick(movie: TopRatedMovie)
 }

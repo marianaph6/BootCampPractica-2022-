@@ -23,13 +23,13 @@ class RegistrationFragment :  Fragment()  {
     private var _binding: FragmentRegistrationBinding? = null
     private val binding get() = _binding!!
 
-    private val registrationViewModel: RegistrationViewModel by viewModels()
+    //private val registrationViewModel: RegistrationViewModel by viewModels()
 
-    private val sharedViewModel by lazy {
+/*    private val sharedViewModel by lazy {
         activity?.let {
             ViewModelProvider(it)[MainViewModel::class.java]
         }
-    }
+    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,10 +49,11 @@ class RegistrationFragment :  Fragment()  {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initObservers()
+        //initObservers()
 
     }
 
+/*
     private fun initObservers() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED){
@@ -70,6 +71,7 @@ class RegistrationFragment :  Fragment()  {
             }
         }
     }
+*/
 
     private fun handlerError(emailError: Int?):  Int? = emailError
 
@@ -101,7 +103,7 @@ class RegistrationFragment :  Fragment()  {
     override fun onDestroyView() {
         print("onDestroyView()")
         super.onDestroy()
-        _binding = null
+        //_binding = null
     }
 
     private fun print(msg: String){

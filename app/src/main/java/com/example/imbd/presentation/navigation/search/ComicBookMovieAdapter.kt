@@ -5,10 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imbd.R
 import com.example.imbd.domain.model.ComicBookMovie
+import com.example.imbd.domain.model.TopRatedMovie
 
 class ComicBookMovieAdapter(
 
-    var data: ArrayList<ComicBookMovie>
+    var data: ArrayList<ComicBookMovie>,
+    val onClickListener: ComicBookMovieOnClickListener
 ):RecyclerView.Adapter<ComicBookMovieViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicBookMovieViewHolder {
@@ -24,9 +26,14 @@ class ComicBookMovieAdapter(
 
     override fun onBindViewHolder(holder: ComicBookMovieViewHolder, position: Int) {
         val item = data[position]
-        holder.bin(item)
+        holder.bind(item, onClickListener)
+
     }
 
 
     override fun getItemCount(): Int= data.size
+
+    interface ComicBookMovieOnClickListener {
+        fun onClick(movie: ComicBookMovie)
+    }
 }

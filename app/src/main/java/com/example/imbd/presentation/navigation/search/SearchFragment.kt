@@ -1,5 +1,6 @@
 package com.example.imbd.presentation.navigation.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,21 +13,23 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.imbd.databinding.FragmentSearchBinding
 import com.example.imbd.domain.model.ComicBookMovie
+import com.example.imbd.domain.model.TopRatedMovie
 import com.example.imbd.network.ComicBookMovie.ComicBookMovieSearchResponse
 import com.example.imbd.network.ComicBookMovie.ComicBookMovieService
+import com.example.imbd.presentation.navigation.detail.DetailMovieActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class SearchFragment : Fragment()  {
+class SearchFragment : Fragment(), ComicBookMovieAdapter.ComicBookMovieOnClickListener {
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
     private var data : ArrayList<ComicBookMovie> = arrayListOf()
     private var matchedBookMovie: ArrayList<ComicBookMovie> = arrayListOf()
-    private var adapterMovies: ComicBookMovieAdapter = ComicBookMovieAdapter(data)
+    private var adapterMovies: ComicBookMovieAdapter = ComicBookMovieAdapter(data,this)
 
     private lateinit var svSearch: SearchView
 
@@ -122,7 +125,7 @@ class SearchFragment : Fragment()  {
     }
 
     private fun initRecyclerView() {
-        adapterMovies = ComicBookMovieAdapter(data)
+        adapterMovies = ComicBookMovieAdapter(data,this)
         with(binding.recyclerView) {
             layoutManager = LinearLayoutManager(activity)
             adapter = adapterMovies
@@ -138,6 +141,16 @@ class SearchFragment : Fragment()  {
         adapterMovies.notifyDataSetChanged()
     }
 
+    override fun onClick(movie: ComicBookMovie) {
+        Toast.makeText(context, "MOVIE: "+movie.title, Toast.LENGTH_SHORT).show()
+        activity?.let{
+            val intent = Intent (it, DetailMovieActivity::class.java)
+            intent.putExtra("ComicBookMovie",movie)
+            intent.putExtra("Type","ComicBookMovie")
+            it.startActivity(intent)
+        }
+
+    }
 
 
 

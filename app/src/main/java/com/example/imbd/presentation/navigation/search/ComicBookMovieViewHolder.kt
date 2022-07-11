@@ -14,12 +14,15 @@ class ComicBookMovieViewHolder (
 
     private val binding= ItemViewHolderComicBookMovieBinding.bind(view)
 
-    fun bin (model: ComicBookMovie){
+    fun bind (model: ComicBookMovie, onClickListener: ComicBookMovieAdapter.ComicBookMovieOnClickListener){
         with(binding){
             Glide.with(itemView).load("https://image.tmdb.org/t/p/w500/"+model.poster_path).into((imageViewComicBookMoviePoster))
             textViewComicBookMovieTitle.text=model.title
             textViewComicBookMovieYear.text=model.release_date.toString()
             textViewComicBookMovieType.text=model.media_type
+            root.setOnClickListener {
+                onClickListener.onClick(model)
+            }
             //ratingBar.numStars=model.rating.roundToInt()
         }
 

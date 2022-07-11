@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.imbd.databinding.ActivityMainBinding

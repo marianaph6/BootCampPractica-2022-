@@ -1,5 +1,7 @@
 package com.example.imbd.domain.model
 
+import java.io.Serializable
+
 
 data class ComicBookMovie (
     var adult: Boolean?= null,
@@ -17,4 +19,4 @@ data class ComicBookMovie (
     var video: Boolean?= null,
     var vote_average: Double?= null,
     var vote_count: Long?= null,
-)
+): Serializable
